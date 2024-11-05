@@ -3,4 +3,12 @@
 	let { children } = $props();
 </script>
 
-{@render children()}
+<div class="dark">
+	{@render children()}
+</div>
+
+<style>
+	:global(:root, body, html) {
+		background: #000;
+	}
+</style>
