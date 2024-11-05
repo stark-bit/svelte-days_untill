@@ -4,13 +4,13 @@
 	let props = $props();
 	let interval: number;
 
-	let targetDate = $state(dayjs(props?.deadline?.replaceAll('-', '.')));
-	// TODO: capture start deadline somehow
+	let targetDate = $state(dayjs(props?.endDate?.replaceAll('-', '.')));
+	// TODO: capture start endDate somehow
 	let startDate = dayjs('2024.10.10').unix();
 	let percentSincePageLoad = $state();
 
 	$effect(() => {
-		targetDate = props.deadline?.replaceAll('-', '.');
+		targetDate = props.endDate?.replaceAll('-', '.');
 		interval = setInterval(() => {
 			percentSincePageLoad =
 				1 - (dayjs(targetDate).unix() - dayjs().unix()) / (dayjs(targetDate).unix() - startDate);

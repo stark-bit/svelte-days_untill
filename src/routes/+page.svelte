@@ -15,7 +15,7 @@
 	let endDate: DateValue | undefined = undefined;
 
 	function handleNavigation() {
-		goto(`view?deadline=${endDate}&startDate=${startDate ? startDate : today(getLocalTimeZone())}`);
+		goto(`view?endDate=${endDate}&startDate=${startDate ? startDate : today(getLocalTimeZone())}`);
 	}
 </script>
 
