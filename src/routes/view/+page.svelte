@@ -16,11 +16,6 @@
 
 <main class="container m-auto">
 	<section class="grid min-h-svh grid-cols-1 items-center justify-center justify-items-center">
-		<h1
-			class="mb-12 text-3xl font-extrabold leading-snug text-white md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl"
-		>
-			Choose your end Date
-		</h1>
     <Countdown {endDate} />
 		<LoadingBar {startDate} {endDate} />
 		<div
