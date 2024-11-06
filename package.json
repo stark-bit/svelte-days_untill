@@ -44,6 +44,7 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-static": "^3.0.6",
 		"dayjs": "^1.11.13"
 	}
 }
