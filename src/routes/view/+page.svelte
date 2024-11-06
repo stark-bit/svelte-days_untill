@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Countdown from '$lib/components/ui/Countdown/Countdown.svelte';
 	import DayGrid from '$lib/components/ui/DayGrid/DayGrid.svelte';
 	import Knob from '$lib/components/ui/knob/knob.svelte';
 	import LoadingBar from '$lib/components/ui/LoadingBar/LoadingBar.svelte';
@@ -20,7 +21,8 @@
 		>
 			Choose your end Date
 		</h1>
-		<LoadingBar {endDate} />
+    <Countdown {endDate} />
+		<LoadingBar {startDate} {endDate} />
 		<div
 			class="mt-12 grid grid-cols-1 justify-items-center gap-3 text-white sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 xl:grid-cols-5 xl:gap-5 2xl:grid-cols-7"
 		>

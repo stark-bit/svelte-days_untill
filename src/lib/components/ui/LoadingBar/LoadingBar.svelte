@@ -2,17 +2,18 @@
 	import dayjs from 'dayjs';
 
 	let props = $props();
-	let interval: number;
 
 	let targetDate = $state(dayjs(props?.endDate?.replaceAll('-', '.')));
-	// TODO: capture start endDate somehow
-	let startDate = dayjs('2024.10.10').unix();
-	let percentSincePageLoad = $state();
+	let startDate = $state();
+	let percentSincePageLoad = $state(0);
 
 	$effect(() => {
+		let interval: number;
+		startDate = dayjs(props.startDate).unix();
 		targetDate = props.endDate?.replaceAll('-', '.');
 		interval = setInterval(() => {
 			percentSincePageLoad =
+				// @ts-expect-error - don't care
 				1 - (dayjs(targetDate).unix() - dayjs().unix()) / (dayjs(targetDate).unix() - startDate);
 		}, 500);
 		return () => clearInterval(interval);
@@ -23,11 +24,11 @@
 	class="md:min-h-13 relative flex min-h-12 w-full items-center gap-[0.5em] rounded-full border-[2px] border-black/30 px-[0.75em] py-[0.5em] text-base dark:border-white md:border-[3px] lg:min-h-12 lg:border-[4px] lg:text-lg xl:min-h-14 xl:text-xl"
 >
 	<div
-		style={`width: ${parseFloat(percentSincePageLoad * 100).toFixed(4)}%`}
+		style={`width: ${parseFloat(percentSincePageLoad * 100 + '').toFixed(4)}%`}
 		class="fill absolute bottom-0 left-0 top-0 z-10 flex h-full items-center justify-end rounded-l-full bg-white pr-[0.75em] font-bold dark:bg-white"
 	>
 		<div class="relative -top-[40px] text-[0.9em] text-black dark:text-white">
-			{parseFloat(percentSincePageLoad * 100).toFixed(3)}%
+			{parseFloat(percentSincePageLoad * 100 + '').toFixed(3)}%
 		</div>
 	</div>
 	<div class="z-20 flex items-center gap-[0.5em] font-bold text-white mix-blend-difference">
