@@ -24,7 +24,7 @@
     <Countdown {endDate} />
 		<LoadingBar {startDate} {endDate} />
 		<div
-			class="mt-12 grid grid-cols-1 justify-items-center gap-3 text-white sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 xl:grid-cols-5 xl:gap-5 2xl:grid-cols-7"
+			class="mt-12 grid grid-cols-1 sm:grid-cols-2 justify-items-center gap-3 text-white  md:grid-cols-3 lg:grid-cols-4 lg:gap-4 xl:grid-cols-5 xl:gap-5 xl3:gap-10 2xl:grid-cols-6"
 		>
 			<Knob unit="years" {endDate} />
 			<Knob unit="months" {endDate} />

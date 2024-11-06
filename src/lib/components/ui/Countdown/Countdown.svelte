@@ -21,7 +21,7 @@
 </script>
 
 {#if endDate}
-	<div class="text-3xl">
+	<div class="text-3xl h-[36px]">
 		{countdown}
 	</div>
 {/if}
