@@ -4,7 +4,9 @@
 </script>
 
 <div class="dark">
-	{@render children()}
+	<div class="text-black dark:text-white">
+		{@render children()}
+	</div>
 </div>
 
 <style>

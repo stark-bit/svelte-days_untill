@@ -3,13 +3,13 @@
 	import Knob from '$lib/components/ui/knob/knob.svelte';
 	import LoadingBar from '$lib/components/ui/LoadingBar/LoadingBar.svelte';
 
-	let startDate = $state();
-	let endDate = $state();
+	let startDate: string = $state('');
+	let endDate: string = $state('');
 
 	$effect(() => {
 		const searchParams = new URLSearchParams(window.location.search);
-		startDate = searchParams.get('startDate');
-		endDate = searchParams.get('endDate');
+		startDate = searchParams.get('startDate') ?? '';
+		endDate = searchParams.get('endDate') ?? '';
 	});
 </script>
 
@@ -33,8 +33,9 @@
 			<Knob unit="seconds" {endDate} />
 		</div>
 	</section>
-	<section class="grid min-h-svh">
-    <DayGrid {startDate} {endDate} />
+
+	<section class="flex flex-col pb-32">
+		<h2 class="text-bold mb-12 mt-12 text-3xl">Days</h2>
+		<DayGrid {startDate} {endDate} unit={'days'} />
 	</section>
 </main>
-
