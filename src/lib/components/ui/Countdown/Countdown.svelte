@@ -6,9 +6,8 @@
 	let countdown = $state();
 
 	$effect(() => {
-		let interval: number;
 		dayjs.extend(duration);
-		interval = setInterval(() => {
+		const interval = setInterval(() => {
 			const now = dayjs();
 			const end = dayjs(endDate);
 			const diff = end.diff(now, 'second');

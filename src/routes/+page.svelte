@@ -27,7 +27,7 @@
 			>
 				Choose your end date
 			</h1>
-			<div class="flex gap-12 flex-wrap">
+			<div class="flex flex-wrap gap-12">
 				<Popover.Root>
 					<Popover.Trigger asChild let:builder>
 						<Button
