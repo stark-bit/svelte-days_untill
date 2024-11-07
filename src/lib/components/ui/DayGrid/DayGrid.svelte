@@ -76,7 +76,7 @@
 	@keyframes pulse {
 		100% {
 			transform: scale(1.5);
-			opacity: .5;
+			opacity: 0.5;
 		}
 	}
 </style>
