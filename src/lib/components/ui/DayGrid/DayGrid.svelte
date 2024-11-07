@@ -53,7 +53,7 @@
 						class={cn(
 							'day life-square relative mr-2 h-full w-full rounded-full bg-black',
 							!day.past ? 'dark:bg-white/40' : 'dark:bg-white/70',
-							day.today && 'scale-150 bg-[green!important]'
+							day.today && 'today'
 						)}
 					></div>
 				{/each}
@@ -66,5 +66,17 @@
 	.day {
 		width: 10px;
 		height: 10px;
+	}
+	.today {
+		background: green;
+		transform: scale(1);
+		animation: pulse 1s infinite;
+	}
+
+	@keyframes pulse {
+		100% {
+			transform: scale(1.5);
+			opacity: .5;
+		}
 	}
 </style>
