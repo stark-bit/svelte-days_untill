@@ -20,12 +20,13 @@
 </script>
 
 {#if startDate}
+  <div class="relative">
+    <div class="absolute -top-[40px] left-[50%] -translate-x-1/2 text-[0.9em] font-bold text-black dark:text-white">
+      {parseFloat(percentSincePageLoad * 100 + '').toFixed(2)}%
+    </div>
 	<div
-		class="md:min-h-13 relative flex min-h-12 w-full items-center gap-[0.5em] rounded-full border-[2px] border-black/30 px-[0.75em] py-[0.5em] text-base dark:border-white md:border-[3px] lg:min-h-12 lg:border-[4px] lg:text-lg xl:min-h-14 xl:text-xl"
+		class="overflow-hidden md:min-h-13 relative flex min-h-12 w-full items-center gap-[0.5em] rounded-full border-[2px] border-black/30 px-[0.75em] py-[0.5em] text-base dark:border-white md:border-[3px] lg:min-h-12 lg:border-[4px] lg:text-lg xl:min-h-14 xl:text-xl"
 	>
-		<div class="absolute -top-[40px] left-[50%] -translate-x-1/2 text-[0.9em] font-bold text-black dark:text-white">
-			{parseFloat(percentSincePageLoad * 100 + '').toFixed(2)}%
-		</div>
 		<div
 			style={`width: ${parseFloat(percentSincePageLoad * 100 + '').toFixed(4)}%`}
 			class="fill absolute bottom-0 left-0 top-0 z-10 flex h-full items-center justify-end rounded-l-full bg-white pr-[0.75em] font-bold dark:bg-white"
@@ -52,6 +53,7 @@
 			>
 		</div>
 	</div>
+</div>
 {/if}
 
 <style>

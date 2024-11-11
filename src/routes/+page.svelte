@@ -33,8 +33,7 @@
 						<Button
 							variant="outline"
 							class={cn(
-								'w-[280px] justify-start text-left font-normal',
-								!endDate && 'text-muted-foreground'
+								'w-[280px] justify-start text-left font-bold',
 							)}
 							builders={[builder]}
 						>
@@ -66,11 +65,12 @@
 				</Popover.Root>
 			</div>
 			<Button
+        size='lg'
 				onclick={handleNavigation}
 				class={cn(
-					'mt-6  block bg-green-700 hover:bg-green-500 active:bg-green-500',
+					'mt-6 font-bold  block bg-orange-500 hover:bg-orange-400 active:bg-orange-400 text-white',
 					!endDate && 'hidden'
-				)}>Hello world</Button
+				)}>Confirm</Button
 			>
 		</div>
 	</section>
