@@ -1,8 +1,11 @@
 <script lang="ts">
 	import cn from 'clsx';
 	import dayjs from 'dayjs';
-	type Unit = 'days' | 'hours' | 'minutes' | 'months' | 'years';
-	let { startDate, endDate }: { startDate: string; endDate: string; unit: Unit } = $props();
+	import weekday from 'dayjs/plugin/weekday';
+	import { tooltip } from '../tooltip/tooltip';
+	let { startDate, endDate, unit }: { startDate: string; endDate: string; unit: 'days' | 'weekend' } = $props();
+
+	dayjs.extend(weekday);
 
 	type Day = { date: string; past: boolean; today: boolean; dNum: number };
 
@@ -43,22 +46,46 @@
 	};
 </script>
 
-<div class="week flex flex-wrap gap-2 gap-y-10">
+<div class="week flex flex-wrap gap-6 gap-y-10">
 	{#if startDate}
-		{#each createWeekArr(createDayArr(startDate, endDate)) as weeks}
-			<div class="week flex flex-col gap-2">
-				{#each weeks as day}
-					<div
-						title={day.date}
-						class={cn(
-							'day life-square relative mr-2 h-full w-full rounded-full bg-black',
-							!day.past ? 'dark:bg-white/40' : 'dark:bg-white/70',
-							day.today && 'today'
-						)}
-					></div>
-				{/each}
-			</div>
-		{/each}
+		{#if unit === 'weekend'}
+			{#each createWeekArr(createDayArr(startDate, endDate)) as weeks}
+				<div class="week flex flex-col gap-3">
+					{#each weeks as day}
+						{#if dayjs(day.date).weekday() === 0 || dayjs(day.date).weekday() === 1}
+							<div
+								title={day.date}
+								use:tooltip
+								class={cn(
+									'day life-square relative h-full  w-full rounded-full bg-black p-3',
+									!day.past ? 'dark:bg-white/40' : 'dark:bg-white/70',
+									!day.past && !day.today && 'cross',
+									day.today && 'today'
+								)}
+							></div>
+						{/if}
+					{/each}
+				</div>
+			{/each}
+
+		{:else}
+			{#each createWeekArr(createDayArr(startDate, endDate)) as weeks}
+				<div class="week flex flex-col gap-3">
+					{#each weeks as day}
+						<div
+							title={day.date}
+							use:tooltip
+							class={cn(
+								'day life-square relative h-full  w-full rounded-full bg-black p-3',
+								!day.past ? 'dark:bg-white/40' : 'dark:bg-white/70',
+								!day.past && !day.today && 'cross',
+								day.today && 'today'
+							)}
+						></div>
+					{/each}
+				</div>
+			{/each}
+		{/if}
 	{/if}
 </div>
 
@@ -71,6 +98,25 @@
 		background: green;
 		transform: scale(1);
 		animation: pulse 1s infinite;
+	}
+
+	.cross:after {
+		content: ' ';
+		transform: rotate(45deg);
+		height: 24px;
+		width: 2px;
+		position: absolute;
+		background: #980202;
+		top: 0;
+	}
+	.cross:before {
+		content: ' ';
+		transform: rotate(-45deg);
+		height: 24px;
+		width: 2px;
+		position: absolute;
+		background: #980202;
+		top: 0;
 	}
 
 	@keyframes pulse {

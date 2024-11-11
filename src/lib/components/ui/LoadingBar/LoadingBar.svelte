@@ -23,7 +23,7 @@
 	<div
 		class="md:min-h-13 relative flex min-h-12 w-full items-center gap-[0.5em] rounded-full border-[2px] border-black/30 px-[0.75em] py-[0.5em] text-base dark:border-white md:border-[3px] lg:min-h-12 lg:border-[4px] lg:text-lg xl:min-h-14 xl:text-xl"
 	>
-		<div class="absolute -top-[40px] left-[50%] text-[0.9em] font-bold text-black dark:text-white">
+		<div class="absolute -top-[40px] left-[50%] -translate-x-1/2 text-[0.9em] font-bold text-black dark:text-white">
 			{parseFloat(percentSincePageLoad * 100 + '').toFixed(2)}%
 		</div>
 		<div

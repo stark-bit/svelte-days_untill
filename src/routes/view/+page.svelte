@@ -28,7 +28,7 @@
 			</a>
 		</div>
 		<div
-			class="xl3:gap-10 mt-12 grid grid-cols-1 justify-items-center gap-3 text-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 xl:grid-cols-5 xl:gap-5 2xl:grid-cols-6"
+			class="xl3:gap-10 mt-12 grid grid-cols-2 justify-items-center gap-3 text-white sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 xl:grid-cols-5 xl:gap-5 2xl:grid-cols-6"
 		>
 			<Knob unit="years" {endDate} />
 			<Knob unit="months" {endDate} />
@@ -41,6 +41,8 @@
 	</section>
 
 	<section class="flex flex-col pb-32">
+    <h2 class="text-bold mb-12 mt-12 text-3xl">Weekend Days</h2>
+    <DayGrid {startDate} {endDate} unit={'weekend'} />
 		<h2 class="text-bold mb-12 mt-12 text-3xl">Days</h2>
 		<DayGrid {startDate} {endDate} unit={'days'} />
 	</section>
